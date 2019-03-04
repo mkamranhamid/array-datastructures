@@ -1,53 +1,58 @@
 console.log("Lets get started");
 
 var arr = [];
-arrayInit();
+var main = [];
+var config = {
+    '0': 'box-container',
+    '1': 'box-container1'
+}
+// arrayInit();
 
-function arrayInit() {
+function arrayInit(arr, box) {
     let arrayLength = document.getElementById('arrayLength');
     let isArrayEmpty = document.getElementById('isArrayEmpty');
     arrayLength.innerText = arr.length;
     isArrayEmpty.innerText = isEmpty(arr);
-    createBoxes(arr)
+    createBoxes(arr, box)
 }
 
-function insertIntoArray() {
+function insertIntoArray(indx) {
     console.log("insertIntoArray");
-    arr.push(arr.length);
-    arrayInit();
+    main[indx].push(main[indx].length);
+    arrayInit(main[indx], config[indx]);
 }
 
-function updateArray() {
-    let indexVal = document.getElementById('index-upd').value;
-    let replacerVal = document.getElementById('replace').value;
-    if (parseInt(indexVal) > (arr.length - 1)) {
+function updateArray(indx, updater, replacer) {
+    let indexVal = document.getElementById(updater).value;
+    let replacerVal = document.getElementById(replacer).value;
+    if (parseInt(indexVal) > (main[indx].length - 1)) {
         alert('Out of range!!')
         return;
     }
-    arr[indexVal] = parseInt(replacerVal);
-    arrayInit();
+    main[indx][indexVal] = parseInt(replacerVal);
+    arrayInit(main[indx], config[indx]);
 }
 
-function deleteFromArray() {
+function deleteFromArray(indx, deletionIndx) {
     console.log("deleteIntoArray");
-    let indexVal = document.getElementById('index-dlt').value;
-    if (parseInt(indexVal) > (arr.length - 1)) {
+    let indexVal = document.getElementById(deletionIndx).value;
+    if (parseInt(indexVal) > (main[indx].length - 1)) {
         alert('Out of range!!')
         return;
     }
-    arr.splice(indexVal, 1);
-    arrayInit();
+    main[indx].splice(indexVal, 1);
+    arrayInit(main[indx], config[indx]);
 }
 
-function searchInArray() {
+function searchInArray(indx, toSrch) {
     console.log("deleteIntoArray");
-    let indexVal = document.getElementById('srch').value;
-    let indexOfBox = arr.indexOf(parseInt(indexVal));
+    let indexVal = document.getElementById(toSrch).value;
+    let indexOfBox = main[indx].indexOf(parseInt(indexVal));
     if (indexOfBox == -1) {
         alert("Can't find the searched key!!");
         return;
     }
-    let boxes = document.getElementById('box-container').children;
+    let boxes = document.getElementById(config[indx]).children;
     removeClassIfExist(boxes);
 
     let targetBox = boxes[indexOfBox];
@@ -64,8 +69,8 @@ function isEmpty(arr) {
     return arr.length > 0 ? false : true;
 }
 
-function createBoxes(arr) {
-    let boxContainer = document.getElementById('box-container');
+function createBoxes(arr, box) {
+    let boxContainer = document.getElementById(box);
     let boxes = arr.map((d) => {
         let box = `<div class="box"><div>${d}</div></div>`;
         return box;
@@ -83,13 +88,14 @@ function showToggler(id) {
     }
 }
 
-function createArray() {
-    
+function createArray(indx) {
+    let newArray = new Array(10).fill(0).map((d, i) => {
+        return i;
+    });
+    main[indx] = newArray;
+    arrayInit(main[indx], config[indx]);
 }
 
-function createArray() {
-
-}
 
 
 /* **Schema** */
