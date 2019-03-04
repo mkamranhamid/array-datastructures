@@ -121,9 +121,9 @@ function mergeArray() {
     let confirmation = confirm('This action is unrevertable. Are you sure you want to do this ?');
     if (!confirmation) return;
     main[0] = main[0].concat(main[1]);
-    arrayInit(main[0], config[0], indx);
+    arrayInit(main[0], config[0], 0);
     main[1] = [];
-    arrayInit(main[1], config[1], indx);
+    arrayInit(main[1], config[1], 1);
 }
 
 function findOrder(array) {
