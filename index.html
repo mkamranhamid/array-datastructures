@@ -12,96 +12,109 @@
 
 <body>
     <div class="container">
-        <h1 class="text-center">Data Structures</h1>
-        <h4>Array 1</h4>
-        <div id="box-container">
-        </div>
-        <div class="mt-10">
-            <div class="display-inline f-l">
-                <button onclick="insertIntoArray(0)">Insert</button>
-                <button onclick="createArray(0)">Create Array(10)</button>
-                <button onclick="showToggler('update-box')">Update</button>
-                <button onclick="showToggler('delete-box')">Delete</button>
-                <button onclick="showToggler('search-box')">Linear Search</button>
-                <div class="mt-10" id="update-box" style="display: none;">
-                    <input type="number" name="index" placeholder="index" id="index-upd" class="w-70">
-                    <input type="number" name="replace" placeholder="replace" id="replace" class="w-70">
-                    <br>
-                    <button class="mt-10" onclick="updateArray(0,'index-upd','replace')">Save</button>
-                </div>
-                <div class="mt-10" id="delete-box" style="display: none;">
-                    <input type="number" name="index" placeholder="index" id="index-dlt" class="w-70">
-                    <br>
-                    <button class="mt-10" onclick="deleteFromArray(0, 'index-dlt')">Save</button>
-                </div>
-                <div class="mt-10" id="search-box" style="display: none;">
-                    <input type="number" name="index" placeholder="find" id="srch" class="w-70">
-                    <br>
-                    <button class="mt-10" onclick="searchInArray(0,'srch')">Save</button>
-                </div>
+        <button onclick="mergeArray()">Merge Arrays</button>
+        <div style="width: 100%;float: left;">
+            <h1 class="text-center">Data Structures</h1>
+            <h4>Array 1</h4>
+            <div id="box-container">
             </div>
-            <div class="display-inline f-r">
-                <h2>Statistics</h2>
-                <table id="t-main">
-                    <tr>
-                        <th>State</th>
-                        <th>Numbers</th>
-                    </tr>
-                    <tr>
-                        <td>Length</td>
-                        <td><span id="arrayLength"></span></td>
-                    </tr>
-                    <tr>
-                        <td>IsEmpty</td>
-                        <td><span id="isArrayEmpty"></span></td>
-                    </tr>
-                </table>
+            <div class="mt-10">
+                <div class="display-inline f-l">
+                    <button onclick="insertIntoArray(0)">Insert</button>
+                    <button onclick="createArray(0)">Create Array(10)</button>
+                    <button onclick="showToggler('update-box')">Update</button>
+                    <button onclick="showToggler('delete-box')">Delete</button>
+                    <button onclick="showToggler('search-box')">Linear Search</button>
+                    <div class="mt-10" id="update-box" style="display: none;">
+                        <input type="number" name="index" placeholder="index" id="index-upd" class="w-70">
+                        <input type="number" name="replace" placeholder="replace" id="replace" class="w-70">
+                        <br>
+                        <button class="mt-10" onclick="updateArray(0,'index-upd','replace')">Save</button>
+                    </div>
+                    <div class="mt-10" id="delete-box" style="display: none;">
+                        <input type="number" name="index" placeholder="index" id="index-dlt" class="w-70">
+                        <br>
+                        <button class="mt-10" onclick="deleteFromArray(0, 'index-dlt')">Save</button>
+                    </div>
+                    <div class="mt-10" id="search-box" style="display: none;">
+                        <input type="number" name="index" placeholder="find" id="srch" class="w-70">
+                        <br>
+                        <button class="mt-10" onclick="searchInArray(0,'srch')">Save</button>
+                    </div>
+                </div>
+                <div class="display-inline f-r">
+                    <h2>Statistics</h2>
+                    <table id="t-main">
+                        <tr>
+                            <th>State</th>
+                            <th>Numbers</th>
+                        </tr>
+                        <tr>
+                            <td>Length</td>
+                            <td><span id="arrayLength"></span></td>
+                        </tr>
+                        <tr>
+                            <td>IsEmpty</td>
+                            <td><span id="isArrayEmpty"></span></td>
+                        </tr>
+                        <tr>
+                                <td>IsSorted</td>
+                                <td><span id="isSorted"></span></td>
+                            </tr>
+                    </table>
+                </div>
             </div>
         </div>
         <br>
-        <h4>Array 2</h4>
-        <div id="box-container1">
-        </div>
-        <div class="mt-10">
-            <div class="display-inline f-l">
-                <button onclick="insertIntoArray(1)">Insert</button>
-                <button onclick="createArray(1)">Create Array(10)</button>
-                <button onclick="showToggler('update-box1')">Update</button>
-                <button onclick="showToggler('delete-box1')">Delete</button>
-                <button onclick="showToggler('search-box1')">Linear Search</button>
-                <div class="mt-10" id="update-box1" style="display: none;">
-                    <input type="number" name="index" placeholder="index" id="index-upd1" class="w-70">
-                    <input type="number" name="replace" placeholder="replace" id="replace1" class="w-70">
-                    <br>
-                    <button class="mt-10" onclick="updateArray(1,'index-upd1','replace1')">Save</button>
-                </div>
-                <div class="mt-10" id="delete-box1" style="display: none;">
-                    <input type="number" name="index" placeholder="index" id="index-dlt1" class="w-70">
-                    <br>
-                    <button class="mt-10" onclick="deleteFromArray(1,'index-dlt1')">Save</button>
-                </div>
-                <div class="mt-10" id="search-box1" style="display: none;">
-                    <input type="number" name="index" placeholder="find" id="srch1" class="w-70">
-                    <br>
-                    <button class="mt-10" onclick="searchInArray(1,'srch1')">Save</button>
-                </div>
+        <div>
+            <h4>Array 2</h4>
+            <div id="box-container1">
             </div>
-            <div class="display-inline f-r">
-                <h2>Statistics</h2>
-                <table id="t-main">
-                    <tr>
-                        <th>State</th>
-                        <th>Numbers</th>
-                    </tr>
-                    <tr>
-                        <td>Length</td>
-                        <td><span id="arrayLength"></span></td>
-                    </tr>
-                    <tr>
-                        <td>IsEmpty</td>
-                        <td><span id="isArrayEmpty"></span></td>
-                    </tr>
-                </table>
+            <div class="mt-10">
+                <div class="display-inline f-l">
+                    <button onclick="insertIntoArray(1)">Insert</button>
+                    <button onclick="createArray(1)">Create Array(10)</button>
+                    <button onclick="showToggler('update-box1')">Update</button>
+                    <button onclick="showToggler('delete-box1')">Delete</button>
+                    <button onclick="showToggler('search-box1')">Linear Search</button>
+                    <div class="mt-10" id="update-box1" style="display: none;">
+                        <input type="number" name="index" placeholder="index" id="index-upd1" class="w-70">
+                        <input type="number" name="replace" placeholder="replace" id="replace1" class="w-70">
+                        <br>
+                        <button class="mt-10" onclick="updateArray(1,'index-upd1','replace1')">Save</button>
+                    </div>
+                    <div class="mt-10" id="delete-box1" style="display: none;">
+                        <input type="number" name="index" placeholder="index" id="index-dlt1" class="w-70">
+                        <br>
+                        <button class="mt-10" onclick="deleteFromArray(1,'index-dlt1')">Save</button>
+                    </div>
+                    <div class="mt-10" id="search-box1" style="display: none;">
+                        <input type="number" name="index" placeholder="find" id="srch1" class="w-70">
+                        <br>
+                        <button class="mt-10" onclick="searchInArray(1,'srch1')">Save</button>
+                    </div>
+                </div>
+                <div class="display-inline f-r">
+                    <h2>Statistics</h2>
+                    <table id="t-main">
+                        <tr>
+                            <th>State</th>
+                            <th>Numbers</th>
+                        </tr>
+                        <tr>
+                            <td>Length</td>
+                            <td><span id="arrayLength1"></span></td>
+                        </tr>
+                        <tr>
+                            <td>IsEmpty</td>
+                            <td><span id="isArrayEmpty1"></span></td>
+                        </tr>
+                        <tr>
+                            <td>IsSorted</td>
+                            <td><span id="isSorted1"></span></td>
+                        </tr>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

@@ -1,25 +1,42 @@
 console.log("Lets get started");
 
 var arr = [];
-var main = [];
+var main = {
+    '0': [],
+    '1': []
+};
 var config = {
     '0': 'box-container',
     '1': 'box-container1'
 }
+var statsConfig = {
+    '0': {
+        'arrayLength': 'arrayLength',
+        'isArrayEmpty': 'isArrayEmpty',
+        'isSorted': 'isSorted'
+    },
+    '1': {
+        'arrayLength': 'arrayLength1',
+        'isArrayEmpty': 'isArrayEmpty1',
+        'isSorted': 'isSorted1'
+    }
+}
 // arrayInit();
 
-function arrayInit(arr, box) {
-    let arrayLength = document.getElementById('arrayLength');
-    let isArrayEmpty = document.getElementById('isArrayEmpty');
+function arrayInit(arr, box, indx) {
+    let arrayLength = document.getElementById(statsConfig[indx].arrayLength);
+    let isArrayEmpty = document.getElementById(statsConfig[indx].isArrayEmpty);
+    let isSorted = document.getElementById(statsConfig[indx].isSorted);
     arrayLength.innerText = arr.length;
     isArrayEmpty.innerText = isEmpty(arr);
+    isSorted.innerText = findOrder(arr);
     createBoxes(arr, box)
 }
 
 function insertIntoArray(indx) {
     console.log("insertIntoArray");
     main[indx].push(main[indx].length);
-    arrayInit(main[indx], config[indx]);
+    arrayInit(main[indx], config[indx], indx);
 }
 
 function updateArray(indx, updater, replacer) {
@@ -30,7 +47,7 @@ function updateArray(indx, updater, replacer) {
         return;
     }
     main[indx][indexVal] = parseInt(replacerVal);
-    arrayInit(main[indx], config[indx]);
+    arrayInit(main[indx], config[indx], indx);
 }
 
 function deleteFromArray(indx, deletionIndx) {
@@ -41,7 +58,7 @@ function deleteFromArray(indx, deletionIndx) {
         return;
     }
     main[indx].splice(indexVal, 1);
-    arrayInit(main[indx], config[indx]);
+    arrayInit(main[indx], config[indx], indx);
 }
 
 function searchInArray(indx, toSrch) {
@@ -93,9 +110,50 @@ function createArray(indx) {
         return i;
     });
     main[indx] = newArray;
-    arrayInit(main[indx], config[indx]);
+    arrayInit(main[indx], config[indx], indx);
 }
 
+function mergeArray() {
+    if (main[0].length == 0 || main[1].length == 0) {
+        alert('Both array must have index greater than 1');
+        return
+    }
+    let confirmation = confirm('This action is unrevertable. Are you sure you want to do this ?');
+    if (!confirmation) return;
+    main[0] = main[0].concat(main[1]);
+    arrayInit(main[0], config[0], indx);
+    main[1] = [];
+    arrayInit(main[1], config[1], indx);
+}
+
+function findOrder(array) {
+    var asc = true;
+    var desc = true;
+    if (array.length < 2) {
+        return 'array is too small'
+    }
+    for (var i = 1, len = array.length; i < len; i++) {
+        //if current element is bigger than previous array is not descending
+        if (array[i] > array[i - 1]) {
+            desc = false;
+            //if current element is smaller than previous array is not ascending
+        } else if (array[i] < array[i - 1]) {
+            asc = false;
+        }
+
+        if (!asc && !desc) {
+            return '0'
+        }
+    }
+
+    if (asc && desc) {
+        return 'array values are equal'
+    } else if (asc) {
+        return '1'
+    } else {
+        return '2'
+    }
+}
 
 
 /* **Schema** */
