@@ -35,25 +35,36 @@ function arrayInit(arr, box, indx) {
 
 function insertIntoArray(indx) {
     console.log("insertIntoArray");
-    main[indx].push(main[indx].length);
+    main[indx].push(main[indx].length + 1);
     arrayInit(main[indx], config[indx], indx);
 }
 
 function updateArray(indx, updater, replacer) {
     let indexVal = document.getElementById(updater).value;
+    if (!indexVal || indexVal < 0) {
+        alert('Cannot find the index !!');
+        return;
+    }
     let replacerVal = document.getElementById(replacer).value;
-    if (parseInt(indexVal) > (main[indx].length - 1)) {
+    indexVal = parseInt(indexVal) - 1;
+    if (indexVal > (main[indx].length - 1)) {
         alert('Out of range!!')
         return;
     }
-    main[indx][indexVal] = parseInt(replacerVal);
+    main[indx][indexVal] = replacerVal ? replacerVal : 'null';
     arrayInit(main[indx], config[indx], indx);
+    // showToggler('update-box');
 }
 
 function deleteFromArray(indx, deletionIndx) {
     console.log("deleteIntoArray");
     let indexVal = document.getElementById(deletionIndx).value;
-    if (parseInt(indexVal) > (main[indx].length - 1)) {
+    if (!indexVal || indexVal < 0) {
+        alert('Cannot find the index !!');
+        return;
+    }
+    indexVal = parseInt(indexVal) - 1;
+    if (indexVal > (main[indx].length - 1)) {
         alert('Out of range!!')
         return;
     }
@@ -107,7 +118,7 @@ function showToggler(id) {
 
 function createArray(indx) {
     let newArray = new Array(10).fill(0).map((d, i) => {
-        return i;
+        return i + 1;
     });
     main[indx] = newArray;
     arrayInit(main[indx], config[indx], indx);
@@ -157,14 +168,14 @@ function findOrder(array) {
 
 
 /* **Schema** */
-/* 
+/*
     {
         arrs:[arr1,arr2,arr3,...];   //arr1=[1,2,3,4]
     }
 */
 
 /* **Merge{arr1,arr2}** */
-/* 
+/*
     {
         arrs:[arr1,arr3,...];
     }
